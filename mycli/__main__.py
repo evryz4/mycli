@@ -68,12 +68,18 @@ while True:
             path = args[0]
         else:
             path = save['defpath']
-        os.chdir(path)
+        if os.path.exists(path):
+            os.chdir(path)
+        else:
+            print('Path is not exists!')
     
     elif command == 'defpath':
         if args is not None:
-            save['defpath'] = args[0]
-            savef()
+            if os.path.exists(args[0]):
+                save['defpath'] = args[0]
+                savef()
+            else:
+                print('Path is not exists!')
         else:
             print('Invalid syntax! Correct - defpath [path]')
     
@@ -84,7 +90,7 @@ while True:
     elif command == 'readtxt':
         if args is not None:
             try:
-                print(os.path.join(os.getcwd(), args[0]))
+                print(f'Reading {os.path.join(os.getcwd(), args[0])}\n')
                 with open(os.path.join(os.getcwd(), args[0])) as file:
                     print(file.read())
             except:

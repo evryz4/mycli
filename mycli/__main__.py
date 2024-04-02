@@ -18,7 +18,7 @@ def nextf():
         print()
 
 while True:
-    uinput = input(os.getcwd()+save['inputstyle']).split()
+    uinput = input('MyCLI | '+os.getcwd()+save['inputstyle']).split()
 
     args = None
     if len(uinput) > 1:

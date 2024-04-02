@@ -2,10 +2,11 @@ import os, json
 
 save = {
     'inputstyle': '> ',
-    'autoclear': False
+    'autoclear': False,
+    'defpath': os.getcwd()
 }
 
-path = 'C://Mycli'
+path = 'C:\\MyCLI'
 savepath = 'save.json'
 
 def savef():

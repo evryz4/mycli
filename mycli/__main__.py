@@ -5,6 +5,8 @@ from clearterminal import clear, system
 from saves import *
 from consts import *
 
+os.chdir(save['defpath'])
+
 clear()
 print(f'MyCLI has been launched.\nEnter help to see the list of commands.\n\n')
 
@@ -16,7 +18,7 @@ def nextf():
         print()
 
 while True:
-    uinput = input(os.save['inputstyle']).split()
+    uinput = input(os.getcwd()+save['inputstyle']).split()
 
     args = None
     if len(uinput) > 1:
@@ -60,6 +62,35 @@ while True:
                 os.system(f'xdg-open {args[0]}')
         else:
             print('Invalid syntax! Correct - open [path]')
+    
+    elif command == 'cd':
+        if args is not None:
+            path = args[0]
+        else:
+            path = save['defpath']
+        os.chdir(path)
+    
+    elif command == 'defpath':
+        if args is not None:
+            save['defpath'] = args[0]
+            savef()
+        else:
+            print('Invalid syntax! Correct - defpath [path]')
+    
+    elif command == 'dir':
+        for iterpath in os.listdir():
+            print(' '*4 + iterpath)
+    
+    elif command == 'readtxt':
+        if args is not None:
+            try:
+                print(os.path.join(os.getcwd(), args[0]))
+                with open(os.path.join(os.getcwd(), args[0])) as file:
+                    print(file.read())
+            except:
+                print('Bad read')
+        else:
+            print('Invalid syntax! Correct - readtxt [path]')
 
     elif command == 'exit':
         break

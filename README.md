@@ -6,7 +6,7 @@ Available OS are: Windows, Linux
 ## Installing
 Download file and enter in your CMD/Terminal:
 ```
-cd mycli
+cd {path_to_mycli}
 python3 setup.py
 ```
 ## Using

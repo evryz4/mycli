@@ -11,7 +11,7 @@ if system == 'Windows':
     sys32path = os.path.join(os.environ['SystemRoot'], 'SysNative' if 
     platform.architecture()[0] == '32bit' else 'System32', 'mycli.bat')
 
-    command = f'python3 {clipath}'
+    command = f'python {clipath}'
 
     @main_requires_admin
     def create_file():
